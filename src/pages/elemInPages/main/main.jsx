@@ -1,5 +1,7 @@
 import Laboratory from './laboratory/laboratory';
 import style from './main.module.css';
+import LeaderLine from "react-leader-line";
+import { useRef, useEffect, createRef } from 'react';
 
 const laboratoryList = [
     {
@@ -69,11 +71,31 @@ const mainStyle = {
     rowGap: '2em'
 };
 
+
+
 const Main = () => {
+
+    useEffect(() => {
+        const lineOptions = {
+            endPlug: "behind",
+            path: "straight",
+            color: "rgba(255, 255, 255, 0.5)"
+        };
+        for (let i = 1; i < laboratoryList.length; i++) {
+            new LeaderLine(document.getElementsByClassName("ref" + i)[0], document.getElementsByClassName("ref" + (i+1))[0], lineOptions);
+        }
+    }, []);
+
+    let i = 1
     return (
         <main className={style.mainContent} style={mainStyle}>
             {laboratoryList.map(laboratory =>
-                <Laboratory id={laboratory.id} nameLaboratory={laboratory.name} sponsors={laboratory.sponsors} />
+                <Laboratory
+                    id={laboratory.id}
+                    ref={laboratoryList.ref}
+                    nameLaboratory={laboratory.name}
+                    sponsors={laboratory.sponsors}
+                />
             )}
 
             {/*
@@ -82,7 +104,7 @@ const Main = () => {
         элемент
             линия между элементами-лаборатории
         */}
-        </main>
+        </main >
     );
 }
 

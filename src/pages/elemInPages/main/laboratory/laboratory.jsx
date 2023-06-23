@@ -11,45 +11,39 @@ const Laboratory = (props) => {
         gridColumn: Grid_column(props.id),
         gridRow: props.id
     }
-    //const rect = ref.current.getBoundingClientRect();
+    const SponsorsPokazStyle = {
+        gridColumn: Grid_column(props.id),
+        gridRow: props.id
+    }
     const [sponsorsStyle, setSponsorsStyle] = useState({
         display: 'none'
     });
     const [center, setCenter] = useState();
-    /*const [center, setCenter] = useState(new Map());
-
-    const SponsorsDisplayBlock = (e) => {
-        setSponsorsStyle({ display: 'block' })
-        const element = e.target.getBoundingClientRect();
-        let centerX = element.left + 40;
-        let centerY = element.top + 40;
-        setCenter(centerXY.x = centerX);
-        setCenter(centerXY.y = centerY);
-        //setCenter(centerXY = {x:centerX, y:centerY});
-        console.log(centerXY);
-        console.log(centerX, centerY);
-    };
-    */
+    
     return (
+        <>
         <div className={style.laboratory}
+            id={props.id}
+            ref={props.ref}
             style={laboratoryStyle}
-            onMouseEnter={(e) => {
-                setSponsorsStyle({ display: 'block' })
-                e.target.getBoundingClientRect();
-                setCenter(e.target.getBoundingClientRect());
-            }}
-            onMouseLeave={() => {setSponsorsStyle({ display: 'none' })}
-
-            }>
-            <CircleGearWheel key={props.id} nameLaboratory={props.nameLaboratory} />
+            >
+            <CircleGearWheel key={props.id} id={props.id} nameLaboratory={props.nameLaboratory} />
             <Sponsors parent={center} sponsors={props.sponsors} style={sponsorsStyle} />
             {/*
             кружок
             спонсоры
             открывающееся меню MegafonLogo.png
         */}
-
         </div>
+        <div style={SponsorsPokazStyle}
+        onMouseEnter={(e) => {
+            setSponsorsStyle({ display: 'block' })
+            e.target.getBoundingClientRect();
+            setCenter(e.target.getBoundingClientRect());
+        }}
+        onMouseLeave={() => { setSponsorsStyle({ display: 'none' }) }
+        }></div>
+        </>
     );
 }
 
