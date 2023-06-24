@@ -3,18 +3,13 @@ import style from './sponsors.module.css';
 
 const Sponsors = (props) => {
     let i = 1;
+
+
     return (
-        <div className={style.sponsors} style={props.style}>
-            {/*props.sponsors.map(elem =>
-            <>
-                {}
-                <img 
-                src={process.env.PUBLIC_URL + '/image/otherImages/SponsorsLogo/' + elem.name} 
-                className={style.sponsors__img} 
-                style={sponsorsStyle}
-                />
-            </>    
-            )*/}
+        <div
+            className={style.sponsors}
+            style={props.style}
+        >
 
             {props.sponsors.map(elem => (
                 <>
@@ -32,12 +27,13 @@ const Image = (props) => {
         const radius = 100;
 
         const angle = props.id * arc + 9 * Math.PI / 10;
-        const x = radius * Math.cos(angle) + props.parent.width/2.8 + "px";//
-        const y = radius * Math.sin(angle) - props.parent.height/1.45 + "px";//
+        const x = radius * Math.cos(angle) + props.parent.width / 8 + "px";//2.8
+        const y = radius * Math.sin(angle) - props.parent.height / 2.5 + "px";//1.45 
         const sponsorsStyle = {
             position: "absolute",
             left: x,
-            top: y
+            top: y,
+            height: "auto"
         }
         return (
             <>

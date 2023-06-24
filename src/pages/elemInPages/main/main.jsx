@@ -65,10 +65,9 @@ const laboratoryList = [
 const mainStyle = {
     display: 'grid',
     gridTemplateColumns: 'repeat(6, 1fr)',
-    gridTemplateRows: 'repeat(' + laboratoryList.at(-1).id + ', 1fr)',
+    gridTemplateRows: 'repeat(' + laboratoryList.at(-1).id + ', 100px 1fr) 100px',
     alignItems: 'stretch',
     justifyItems: 'stretch',
-    rowGap: '2em'
 };
 
 
