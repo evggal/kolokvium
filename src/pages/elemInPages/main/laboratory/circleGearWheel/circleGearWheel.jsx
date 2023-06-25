@@ -1,10 +1,11 @@
+import { Link, Route } from 'react-router-dom';
 import image from './../../../../../image/otherImages/wheelGear.svg';
 import style from './circleGearWheel.module.css';
 
 const CircleGearWheel = (props) => {
     let i=0;
     return (
-        <a href='#' className={style.circleGearWheel + " conteiner" + props.id} style={props.style}>
+        <Link to="/labInfo" state={{id:props.id}} className={style.circleGearWheel + " conteiner" + props.id} style={props.style}>
             <img src={image} className={style.circleGearWheel__image + " ref" + props.id}></img>
             <p>{props.nameLaboratory}</p>
             {props.sponsors.map(elem => (
@@ -12,7 +13,7 @@ const CircleGearWheel = (props) => {
                     <Image elem={elem} countSponsors={props.sponsors.length} id={i++} idLab={props.id} style={props.styleSponsors}/>
                 </>
             ))}
-        </a>
+        </Link>
     );
 }
 

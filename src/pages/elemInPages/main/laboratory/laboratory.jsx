@@ -17,7 +17,7 @@ const Laboratory = (props) => {
         gridColumnEnd: Grid_column(props.id) + 2,
         gridRowStart: props.id * 2 - 1,
         gridRowEnd: props.id * 2 + 2,
-        border: '1px #fff solid',
+        /*border: '1px #fff solid',*/
         justifySelf:"stretch",
         marging: "20px"
     }
@@ -64,7 +64,6 @@ const Laboratory = (props) => {
                 onClick={() => {
                     setBigMenuStyle({ display: "block" });
                     setReplaceOnBigMenu({ display: "none" });
-                    setSponsorsStyle({ display: "none" });
                 }}
             >
 
