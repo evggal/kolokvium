@@ -5,8 +5,8 @@ import img2 from './../../../image/otherImages/SUAIlogo.svg';
 const FooterLogo = () => {
     return (
         <footer className="footerLogo">
-            <img src={img1}></img>
-            <img src={img2}></img>
+            <img src={img1} className="footerLogo__img"></img>
+            <img src={img2} className="footerLogo__img"></img>
         </footer>
     );
 }

@@ -1,3 +1,5 @@
+import "./otherInfo.css";
+
 const OtherInfo = (props) => {
     const divDescriptionStyle = {
         padding: "3em 7em",
@@ -14,11 +16,12 @@ const OtherInfo = (props) => {
         width: "100px",
         borderRadius: "50%"
     }
+
     return (
         <>
             <div style={divDescriptionStyle}>
                 {props.infa.map(elem =>
-                    <p><span>{elem.col}</span>{elem.description}</p>
+                    <p><span className="BigNumber">{elem.col}</span>{elem.description}</p>
                 )}
             </div>
             <div style={divDescriptionStyle}>
