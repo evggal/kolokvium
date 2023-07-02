@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CircleGearWheel from "./circleGearWheel/circleGearWheel";
 import style from './laboratory.module.css';
 import BigMenu from "./bigMenu/bigMenu";
+import LeaderLine from "react-leader-line";
 
 const Laboratory = (props) => {
     const Grid_column = (id) => {
@@ -18,7 +19,7 @@ const Laboratory = (props) => {
         gridRowStart: props.id * 2 - 1,
         gridRowEnd: props.id * 2 + 2,
         /*border: '1px #fff solid',*/
-        justifySelf:"stretch",
+        justifySelf: "stretch",
         marging: "20px"
     }
     const [sponsorsStyle, setSponsorsStyle] = useState({
@@ -30,7 +31,7 @@ const Laboratory = (props) => {
     const [replaceOnBigMenu, setReplaceOnBigMenu] = useState({
         display: "block"
     })
-
+    
     return (
         <>
             <div className={style.laboratory}
@@ -42,7 +43,14 @@ const Laboratory = (props) => {
                 }}
                 onMouseLeave={() => { setSponsorsStyle({ opacity: 0 }) }}
             >
-                <CircleGearWheel key={props.id} id={props.id} nameLaboratory={props.nameLaboratory} style={replaceOnBigMenu} sponsors={props.sponsors} styleSponsors={sponsorsStyle} />
+                <CircleGearWheel
+                    key={props.id}
+                    id={props.id}
+                    nameLaboratory={props.nameLaboratory}
+                    style={replaceOnBigMenu}
+                    sponsors={props.sponsors}
+                    styleSponsors={sponsorsStyle}
+                />
                 <BigMenu
                     id={props.id}
                     nameLaboratory={props.nameLaboratory}
@@ -64,6 +72,7 @@ const Laboratory = (props) => {
                 onClick={() => {
                     setBigMenuStyle({ display: "block" });
                     setReplaceOnBigMenu({ display: "none" });
+                    console.log();
                 }}
             >
 
