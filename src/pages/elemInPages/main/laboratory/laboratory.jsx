@@ -31,7 +31,7 @@ const Laboratory = (props) => {
     const [replaceOnBigMenu, setReplaceOnBigMenu] = useState({
         display: "block"
     })
-    
+
     return (
         <>
             <div className={style.laboratory}
@@ -70,9 +70,11 @@ const Laboratory = (props) => {
                 }}
                 onMouseLeave={() => { setSponsorsStyle({ opacity: 0 }) }}
                 onClick={() => {
-                    setBigMenuStyle({ display: "block" });
-                    setReplaceOnBigMenu({ display: "none" });
-                    console.log();
+                    (BigMenuStyle.display == "none") ? setBigMenuStyle({ display: "block" }) :
+                    setBigMenuStyle({ display: "none" });
+                    (replaceOnBigMenu.display == "block") ? setReplaceOnBigMenu({ display: "none" }) :
+                    setReplaceOnBigMenu({ display: "block" });
+                    console.log(BigMenuStyle.display == "none", replaceOnBigMenu.display == "block");
                 }}
             >
 

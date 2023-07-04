@@ -1,7 +1,7 @@
 import Laboratory from './laboratory/laboratory';
 import style from './main.module.css';
 import LeaderLine from "react-leader-line";
-import { useRef, useEffect, createRef, useState } from 'react';
+import { useRef, useEffect, useLayoutEffect, createRef, useState } from 'react';
 import Laboratory_copy from './laboratory/laboratory_copy';
 
 const laboratoryList = [
@@ -104,42 +104,10 @@ const mainStyle = {
     justifyItems: 'center',
 };
 
-const setLine = () => {
-
-}
-
 const Main = () => {
 
-    /*window.addEventListener('load', () => {
-        const lineOptions = {
-            endPlug: "behind",
-            path: "straight",
-            color: "rgba(255, 255, 255, 0.5)"
-        };
-        for (let i = 1; i < laboratoryList.length; i++) {
-            new LeaderLine(document.getElementsByClassName("ref" + i)[0], document.getElementsByClassName("ref" + (i + 1))[0], lineOptions);
-        }
-    })*/
-    const line = new Array(laboratoryList.length);
-    console.log(line)
-    useEffect(() => {
-        const lineOptions = {
-            endPlug: "behind",
-            path: "straight",
-            color: "rgba(255, 255, 255, 0.5)"
-        };
-        let elem, disp;
-        for (let i = 1; i < laboratoryList.length; i++) {
-            elem = document.getElementsByClassName("ref" + i);
-            disp = window.getComputedStyle(elem[0]).display;
-            console.log(disp == "none");
-            line[i-1] = new LeaderLine(
-                document.getElementsByClassName("ref" + i)[0], 
-                document.getElementsByClassName("ref" + (i + 1))[0], lineOptions);
-        }
-        console.log("a", line[0]);
-    });
-    /*
+    const [line, setLine] = useState(new Map());
+    let [click, setClick] = useState(false)
     useEffect(() => {
         const lineOptions = {
             endPlug: "behind",
@@ -147,28 +115,40 @@ const Main = () => {
             color: "rgba(255, 255, 255, 0.5)"
         };
         for (let i = 1; i < laboratoryList.length; i++) {
-            new LeaderLine(document.getElementsByClassName("ref" + i)[0], document.getElementsByClassName("ref" + (i + 1))[0], lineOptions);
+            let startElem = (
+                window.getComputedStyle(document.getElementsByClassName("ref" + i)[1]).display == "none") ?
+                document.getElementsByClassName("ref" + i)[0] :
+                document.getElementsByClassName("ref" + i)[1];
+            let endElem = (
+                window.getComputedStyle(document.getElementsByClassName("ref" + (i + 1))[1]).display == "none") ?
+                document.getElementsByClassName("ref" + (i + 1))[0] :
+                document.getElementsByClassName("ref" + (i + 1))[1];
+
+            setLine(line.set(i, new LeaderLine(
+                startElem,
+                endElem,
+                lineOptions)
+            ))
         }
-    }, []);
-    */
+        return () => {
+            for (let j = 1; j < laboratoryList.length; j++) {
+                line.get(j).remove();
+            }
+        }
+    }, [click]);
+    
     let i = 1
     return (
         <main
             className={style.mainContent}
             style={mainStyle}
             onClick={() => {
-                /*setLineStyle(() => {
-                    /*const lineOptions = {
-                        endPlug: "behind",
-                        path: "straight",
-                        color: "rgba(255, 255, 255, 0.5)"
-                    };
-                    for (let i = 1; i < laboratoryList.length; i++) {
-                        new LeaderLine(document.getElementsByClassName("ref" + i)[0], document.getElementsByClassName("ref" + (i + 1))[0], lineOptions);
-                    }
-                });
+                for (let i = 1; i < laboratoryList.length; i++) {
+                    document.getElementsByClassName("ref" + i)[1].style.display = "none"
+                    document.getElementsByClassName("conteiner" + i)[0].style.display = "block"
+                }
+                setClick(click => !click)
                 
-            })*/
             }}
         >
             {laboratoryList.map(laboratory =>
