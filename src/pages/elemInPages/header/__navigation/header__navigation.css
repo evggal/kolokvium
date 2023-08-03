@@ -11,3 +11,8 @@
     text-decoration: none;
     padding: 20px 0;
 }
+
+.header__name {
+    color: #fff;
+    padding: 20px 0;
+}

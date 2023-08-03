@@ -1,3 +1,7 @@
 .footer  {
     padding-bottom: 7%;
 }
+
+.footer__logo {
+    margin-left: 2%;
+}

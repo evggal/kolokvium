@@ -17,49 +17,51 @@ const Sponsors = (props) => {
         border: "1px solid #fff"
     }
     return (
+        <>{/* 
         <div
             className={style.sponsors}
             style={{ ...props.style, ...sponsorsStyle }}
-        >
-
+        ></div>
+        */}
             {props.sponsors.map(elem => (
-                <>
-                    <Image elem={elem} countSponsors={5} id={i++} parent={props.parent} />
-                </>
+                <Image elem={elem} countSponsors={props.countSponsors} id={i++} idLab={props.id} style={props.style}/>
             ))}
-        </div>
+        
+        </>
     );
 }
 
 const Image = (props) => {
-    if (typeof props.parent != "undefined") {
-        const countSponsors = props.countSponsors;
-        const arc = Math.PI * (1 / countSponsors);
-        const radius = 100;
-
-        const angle = props.id * arc + 9 * Math.PI / 10;
-        const x = radius * Math.cos(angle) + 163.6 / 2 + "px";//2.8+ props.parent.width / 8
-        const y = radius * Math.sin(angle) - 169 + "px";//1.45 - props.parent.height / 2.5
-        const sponsorsStyle = {
-            position: "absolute",
-            left: x,
-            top: y,
-            height: "auto"
-        }
-        return (
-            <>
-                <img
-                    src={process.env.PUBLIC_URL + '/image/otherImages/SponsorsLogo/' + props.elem.name + ".svg"}
-                    className={style.sponsors__img}
-                    style={sponsorsStyle}
-                />
-            </>
-        );
+    const countSponsors = props.countSponsors;
+    const arc = Math.PI * (1 / countSponsors);
+    const radius = 100;
+    let angle = 0
+    if (props.idLab%4==1 || props.idLab%4==0) {
+        angle = props.id * arc + 10 * Math.PI / 13;
     } else {
-        return (<></>);
+        angle = props.id * arc + 9 * Math.PI / 8;
     }
-
-
+    
+    const x = radius * Math.cos(angle) + 50  + "px";//2.8+ props.parent.width / 8
+    const y = radius * Math.sin(angle) + 10 + "px";//1.45 - props.parent.height / 2.5
+    const sponsorsStyle = {
+        position: "absolute",
+        transition: "1s",
+        left: x,
+        top: y
+    }
+    return (
+        <div
+            className={style.sponsors__div}style={{...sponsorsStyle, ...props.style}}
+        >
+            <img
+                src={process.env.PUBLIC_URL + '/image/otherImages/SponsorsLogo/' + props.elem.name + ".svg"}
+                className={style.sponsors__img}
+                
+            />
+        </div>
+    );
 }
+
 
 export default Sponsors;

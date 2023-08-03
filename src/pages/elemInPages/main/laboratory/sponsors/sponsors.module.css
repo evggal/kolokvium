@@ -9,6 +9,23 @@
 
 }
 
-.sponsors__img {
+.sponsors__div {
     position: absolute;
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    border: 4px #fff solid;
+    /*overflow: hidden;*/
+    background-color: rgba(255,255,255,0.7);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sponsors__div:hover {
+    transform: scale(1.3);
+}
+
+.sponsors__img {
+    width: 45px;
 }

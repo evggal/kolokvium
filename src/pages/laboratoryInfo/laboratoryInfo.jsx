@@ -149,7 +149,8 @@ const LaboratoryInfo = () => {
         <div className={style.laboratoryInfo}>
             <Header style={"header_withBackground" + " " + "header_normal"} />
             <NameLab name={laboratory[0].name} />
-            <MainInfo pictureWithDescription={laboratory[0].pictureWithDescription}
+            <MainInfo
+                pictureWithDescription={laboratory[0].pictureWithDescription}
                 infa={laboratory[0].infa}
                 contacts={laboratory[0].contacts}
             />

@@ -1,0 +1,23 @@
+.labProject__project {
+    padding: 2%; margin: 1%;
+    border-radius: 50%;
+    border:1px solid aqua;
+    width: 90px; height: 90px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space:normal;
+}
+
+.labProject__project:nth-child(1) {
+    border: 3px rgba(171, 58, 141, 0.7) solid;
+}
+
+.labProject__project:nth-child(2) {
+    border: 3px rgba(0, 90, 170, 0.7) solid;
+}
+
+.labProject__project:nth-child(3) {
+    border: 3px rgba(247, 45, 120, 0.7) solid;
+}

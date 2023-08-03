@@ -8,7 +8,7 @@ import style from './laboratorySelection.module.css';
 const LaboratorySelection = () => {
     return (
         <div className={style.laboratorySelection}>
-            <Header style={"header_normal"}/>
+            <Header style={"header_normal"} />
             <MainTitle />
             <Main />
             <Footer />
